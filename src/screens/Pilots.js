@@ -27,8 +27,22 @@ const Pilots = () => {
     getStarships();
   },[])
 
+  const updateFavoritePilots = (pilotUrl) => {
+    let array = [];
+    pilots.map( pilot => {
+      let newPilot = {}
+      if(pilot.url === pilotUrl) {
+        newPilot = {...pilot, favorite:!pilot.favorite}
+      }else{
+        newPilot = pilot
+      }
+      array.push(newPilot)
+    })
+    savePilots(array)
+  }
+
   if(loading) return <Text>Loading...</Text>
-  return <ListPilots pilots={pilots}/>
+  return <ListPilots pilots={pilots} updateFavoritePilots={updateFavoritePilots}/>;
 }
 
 export default Pilots
