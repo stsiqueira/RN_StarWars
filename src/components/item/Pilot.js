@@ -1,29 +1,32 @@
-import { StyleSheet, Text, View, Button } from 'react-native'
-import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
-import { GetLocalData }from '../../services/LocalStorage'
+import { StyleSheet, Text, View, Button } from "react-native";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { GetLocalData } from "../../services/LocalStorage";
 
 const Pilot = ({ pilot, updateFavoritePilots }) => {
-  const hasToken = GetLocalData('token')
-  const starships = useSelector(state => state.starships)
-  const [ pilotStarships, setPilotStarships ] = useState([]);
+  const hasToken = GetLocalData("token");
+  const starships = useSelector((state) => state.starships);
+  const [pilotStarships, setPilotStarships] = useState([]);
 
   const FilterStarships = () => {
-    let array = []
+    let array = [];
     pilot.starships.map(
       (starshipUrl) =>
-        (array = [...array, ...starships.filter((starship) => starship.url === starshipUrl)]),
+        (array = [
+          ...array,
+          ...starships.filter((starship) => starship.url === starshipUrl),
+        ])
     );
     setPilotStarships(array);
-  }
-  useEffect(()=> FilterStarships() , [])
+  };
+  useEffect(() => FilterStarships(), []);
   return (
     <View style={styles.container}>
       {hasToken ? (
         <View>
           <Button
             onPress={() => updateFavoritePilots(pilot.url)}
-            title={pilot.favorite ? 'Remove Favorite' : 'Add Favorite'}
+            title={pilot.favorite ? "Remove Favorite" : "Add Favorite"}
           />
         </View>
       ) : (
@@ -40,10 +43,10 @@ const Pilot = ({ pilot, updateFavoritePilots }) => {
         );
       })}
     </View>
-  )
-}
+  );
+};
 
-export default Pilot
+export default Pilot;
 
 const styles = StyleSheet.create({
   container: {

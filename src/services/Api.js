@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = 'https://swapi.dev/api/';
+const baseUrl = "https://swapi.dev/api/";
 
 export const GetData = async (option) => {
   let array = [];
@@ -11,7 +11,7 @@ export const GetData = async (option) => {
       break;
     }
   }
-  if (option === 'starships') {
+  if (option === "starships") {
     const starships = array.filter((starship) => starship.pilots.length > 0);
     return starships;
   }
