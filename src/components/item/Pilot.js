@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { GetLocalData }from '../../services/LocalStorage'
 
-const Pilot = ({ pilot }) => {
+const Pilot = ({ pilot, updateFavoritePilots }) => {
   const hasToken = GetLocalData('token')
   const starships = useSelector(state => state.starships)
   const [ pilotStarships, setPilotStarships ] = useState([]);
@@ -22,7 +22,7 @@ const Pilot = ({ pilot }) => {
       {hasToken ? (
         <View>
           <Button
-            onPress={() => console.log('pilot')}
+            onPress={() => updateFavoritePilots(pilot.url)}
             title={pilot.favorite ? 'Remove Favorite' : 'Add Favorite'}
           />
         </View>
