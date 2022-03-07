@@ -9,12 +9,12 @@ export const StoreLocalData = async (localData, data) => {
 }
 
 export const GetLocalData = async (localData) => {
-  try{
-    return await AsyncStorage.getItem(localData)
+  try {
+    return await AsyncStorage.getItem(localData);
   } catch (err) {
-    console.log('Error getting local data:', err)
+    console.log('Error getting local data:', err);
   }
-}
+};
 
 export const RemoveLocalData = async (localData) =>{
   try{

@@ -1,12 +1,17 @@
 import { createStackNavigator } from "@react-navigation/stack"
 import TabNavigation from '../tabNavigation/Index'
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import LoginForm from "../components/LoginForm";
+import { GetLocalData } from "../services/LocalStorage";
 
 const Stack = createStackNavigator();
 
 const Index = () => {
-  const [hasToken, setHasToken] = useState(false);
+  const [hasToken, setHasToken] = useState();
+  useEffect( async () => {
+    const checkToken = await GetLocalData('token');
+    setHasToken(checkToken)
+  },[])
 
   return (
     <Stack.Navigator>
