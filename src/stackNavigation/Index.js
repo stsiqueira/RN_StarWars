@@ -6,12 +6,12 @@ import LoginForm from "../components/LoginForm";
 const Stack = createStackNavigator();
 
 const Index = () => {
-  const [hasToken, setHasToken] = useState(true);
+  const [hasToken, setHasToken] = useState(false);
 
   return (
     <Stack.Navigator>
       { !hasToken ? <Stack.Screen name="Login" component={LoginForm}/> : <></> }
-      <Stack.Screen name="home" component={TabNavigation}/>
+      <Stack.Screen name="Home" component={TabNavigation}/>
     </Stack.Navigator>
   )
 }

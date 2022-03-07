@@ -9,7 +9,7 @@ const Guest = () => {
   return (
     <Tab.Navigator>
       <Tab.Screen name='Pilots' component={Pilots}/>
-      <Tab.Screen name='Login' component={Login}/>
+      <Tab.Screen name='LoginTab' component={Login}/>
     </Tab.Navigator>
     )
 }
