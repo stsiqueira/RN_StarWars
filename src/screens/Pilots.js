@@ -6,8 +6,10 @@ import { Text, View, TextInput, TouchableOpacity, ScrollView } from 'react-nativ
 import { GetData } from '../services/Api';
 import { bindActionCreators } from 'redux';
 import * as actionCreators from '../state/actionCreators/Index'
+import { useFocusEffect } from '@react-navigation/native';
 
 const Pilots = () => {
+  
   const pilots = useSelector(state => state.pilots)
   const starships = useSelector(state => state.starships)
   const dispatch = useDispatch();
@@ -30,7 +32,7 @@ const Pilots = () => {
     getPilots();
     getStarships();
   },[])
-
+  useFocusEffect(() => setShowPilots(pilots))
   const FilterBySearch = () => {
     if(search === '') {
       setShowPilots(pilots)
@@ -83,7 +85,7 @@ const Pilots = () => {
   return (
     <ScrollView>
       <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom:12}}>
-        <TextInput value={search} onChangeText={setSearch}/>
+        <TextInput value={search} onChangeText={setSearch} style={{ borderBottomWidth:1, width:'70%', marginTop:16}}/>
         <TouchableOpacity onPress={FilterBySearch}>
           <Text>Search</Text>
         </TouchableOpacity>
