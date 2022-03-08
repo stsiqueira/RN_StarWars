@@ -29,7 +29,7 @@ const NewPilot = ({ navigation }) => {
   };
 
   return (
-    <SafeAreaView>
+    <View style={{flex:1}}>
       <Formik
         initialValues={{ name: "", gender: "", starship: "" }}
         onSubmit={(values, { resetForm }) => {
@@ -87,7 +87,7 @@ const NewPilot = ({ navigation }) => {
           </View>
         )}
       </Formik>
-    </SafeAreaView>
+    </View>
   );
 };
 
